@@ -1,0 +1,122 @@
+<?php
+
+/**
+ * Implements hook_node_insert()
+ */
+function smashdocs_node_insert(Drupal\Core\Entity\EntityInterface $node) {
+    // create folder
+    $path = 'public://smashdocs/' .$node->id(). '/';
+    file_prepare_directory($path, FILE_CREATE_DIRECTORY);
+    //if (file_prepare_directory($path, FILE_CREATE_DIRECTORY)) {
+        //drupal_set_message("WM Directory create successfully");
+    //}
+}
+
+/**
+ * Implements hook_preprocess_node()
+ */
+function smashdocs_preprocess_node(&$variables){
+    if(isset($variables['node']) AND $variables['node']->getType() == 'smashdocs'){
+        $body = $variables['node']->get('body')->getValue();
+        $meta = json_decode($body[0]['value']);
+        if(isset($meta->baseInfo)){
+            $sd = new \Drupal\smashdocs\Smashdocs();
+            $meta->docInfo = (object) $sd->document_info($meta->baseInfo->documentId);
+            $variables['meta'] = $meta;
+        }else{
+            $variables['file_form'] = \Drupal::formBuilder()->getForm('Drupal\smashdocs\Form\FileForm', $variables['node']->id());
+        }
+    }
+}
+
+/**
+ * Implements hook_theme()
+ */
+function smashdocs_theme() {
+    $theme['node__smashdocs'] = [
+        'template' => 'node--smashdocs',
+        'base hook' => 'node',
+    ];
+
+    return $theme;
+}
+
+
+
+function ends_with($string, $test)
+{
+    $strlen = strlen($string);
+    $testlen = strlen($test);
+    if ($testlen > $strlen) return false;
+    return substr_compare($string, $test, $strlen - $testlen, $testlen) === 0;
+}
+
+
+
+function check_role($role)
+{
+    $allowed_sd_roles = array('editor', 'reader', 'approver', 'commentator');
+    if (!in_array($role, $allowed_sd_roles)) {
+        throw new Exception('Unkown Smashdocs role: ' . $role);
+    }
+}
+
+
+
+function check_length($s, $max_len)
+{
+    if (strlen($s) > $max_len) {
+        throw new Exception('String too long');
+    }
+}
+
+
+
+function check_title($s)
+{
+    return check_length($s, 200);
+}
+
+
+
+function check_description($s)
+{
+    return check_length($s, 400);
+}
+
+
+
+/* Check Email */
+function check_email($s)
+{
+    /* Check Email */
+    return check_length($s, 150);
+}
+
+
+function check_firstname($s)
+{
+    return check_length($s, 150);
+}
+
+
+function check_lastname($s)
+{
+    return check_length($s, 150);
+}
+
+
+function check_company($s)
+{
+    return check_length($s, 150);
+}
+
+
+function check_document_id($document_id)
+{
+}
+
+
+function check_user_data($ud)
+{
+}

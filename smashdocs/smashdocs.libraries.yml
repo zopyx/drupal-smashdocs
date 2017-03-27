@@ -1,0 +1,9 @@
+smashdocs:
+  version: 1.x
+  css:
+    theme:
+      assets/css/smashdocs.css: {}
+  js:
+    assets/js/smashdocs.js: {}
+  dependencies:
+    - core/jquery

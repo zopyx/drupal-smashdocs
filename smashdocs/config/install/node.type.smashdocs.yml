@@ -1,0 +1,14 @@
+# node.type.smashdocs.yml
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - smashdocs # This is the name of the module we're using for this example
+name: 'SMASHDOCs'
+type: smashdocs
+description: 'Content type SMASHDOCs'
+help: ''
+new_revision: false
+preview_mode: 0
+display_submitted: true

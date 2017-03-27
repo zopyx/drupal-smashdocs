@@ -1,0 +1,13 @@
+{
+  "name": "webmate/smashdocs",
+  "description": "",
+  "type": "drupal-module",
+  "license": "GPL-2.0+",
+  "minimum-stability": "dev",
+  "require": {
+    "phpunit/phpunit": "~4.8|~5.0",
+    "ramsey/uuid": "*",
+    "firebase/php-jwt": "*",
+    "guzzlehttp/guzzle": "~6.0"
+  }
+}

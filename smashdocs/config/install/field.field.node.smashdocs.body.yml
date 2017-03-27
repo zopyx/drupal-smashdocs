@@ -1,0 +1,22 @@
+# field.field.node.smashdocs.body.yml
+langcode: en
+status: true
+dependencies:
+    config:
+        - field.storage.node.body
+        - node.type.smashdocs
+    module:
+        - text
+id: node.smashdocs.body
+field_name: body
+entity_type: node
+bundle: smashdocs
+label: Metadata
+description: 'More specific information about the SMASHDOCS document.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+    display_summary: true
+field_type: text

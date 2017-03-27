@@ -1,0 +1,113 @@
+{% if meta is defined %}
+
+    <div class="col-4">
+        <h3>{{ 'Edit'|t }}</h3>
+        {% if meta.docInfo.archived %}
+            <p>{{ "Can't edit"|t }}</p>
+        {% else %}
+            <a href="/smashdocs/create-document/{{ node.id }}" target="_blank" class="btn button smashdocs-edit-document">
+                {{ 'Edit document'|t }}
+            </a>
+        {% endif %}
+    </div>
+
+    <div class="col-4">
+        {% if meta.docInfo.archived %}
+            <h3>{{ 'Unarchive'|t }}</h3>
+            <a href="/smashdocs/unarchive-document/{{ node.id }}" class="bnt button smashdoc-unarchive-document">
+                {{ 'Unarchive document'|t }}
+            </a>
+        {% else %}
+            <h3>{{ 'Archive'|t }}</h3>
+            <a href="/smashdocs/archive-document/{{ node.id }}" class="bnt button smashdoc-archive-document">
+                {{ 'Archive document'|t }}
+            </a>
+        {% endif %}
+    </div>
+
+    <div class="col-4">
+        <h3>{{ 'Export'|t }}</h3>
+        <p>
+            <a href="/smashdocs/export-document/{{ node.id }}/docx" target="_blank" class="btn button smashdocs-edit-document">
+                {{ 'DOCX export'|t }}
+            </a>
+        </p>
+        <p>
+            <a href="/smashdocs/export-document/{{ node.id }}/html" target="_blank" class="btn button smashdocs-edit-document">
+                {{ 'HTML export'|t }}
+            </a>
+        </p>
+        <p>
+            <a href="/smashdocs/export-document/{{ node.id }}/sdxml" target="_blank" class="btn button smashdocs-edit-document">
+                {{ 'XML export'|t }}
+            </a>
+        </p>
+    </div>
+
+    <div class="col-12">
+        <table>
+            <tr>
+                <td>{{ 'Status'|t }}</td>
+                <td>{{ meta.docInfo.status }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'Archived'|t }}</td>
+                <td>{{ meta.docInfo.archived ? 'Yes':'No' }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'CreatorIdSD'|t }}</td>
+                <td>{{ meta.docInfo.creatorIdSD }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'Title'|t }}</td>
+                <td>{{ meta.docInfo.title }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'HasUnreadSectionChanges'|t }}</td>
+                <td>{{ meta.docInfo.hasUnreadSectionChanges ? 'Yes':'No' }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'Id'|t }}</td>
+                <td>{{ meta.docInfo.id }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'CreatorId'|t }}</td>
+                <td>{{ meta.docInfo.creatorId }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'HasUnreadConversationChanges'|t }}</td>
+                <td>{{ meta.docInfo.hasUnreadConversationChanges ? 'Yes':'No' }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'HasOpenedDocument'|t }}</td>
+                <td>{{ meta.docInfo.hasOpenedDocument ? 'Yes':'No' }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'GroupId'|t }}</td>
+                <td>{{ meta.docInfo.groupId }}</td>
+            </tr>
+        </table>
+    </div>
+
+
+{% else %}
+
+    <div class="no-found">
+        {{ 'There is no document available for editing'|t }}
+    </div>
+    <div class="col-6">
+        <h3>{{ 'New'|t }}</h3>
+        {#{{ kint(node) }}#}
+        <h1>{{ testme }}</h1>
+        <a href="/smashdocs/create-document/{{ node.id }}" target="_blank" class="btn button smashdocs-create-document">
+            {{ 'Create document'|t }}
+        </a>
+    </div>
+    <div class="col-6">
+        <h3>{{ 'Upload'|t }}</h3>
+        {{ file_form }}
+        {#<input type="file" name="file">#}
+        {#<span class="btn button">{{ 'Upload document'|t }}</span>#}
+    </div>
+
+{% endif %}

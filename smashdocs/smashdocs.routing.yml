@@ -1,0 +1,39 @@
+smashdocs.config:
+  path: '/admin/config/smashdocs/config'
+  defaults:
+    _form: '\Drupal\smashdocs\Form\SmashdocsConfigForm'
+    _title: 'SMASHDOCs Configuration'
+  requirements:
+    _permission: 'administer site configuration'
+
+smashdocs.create:
+  path: '/smashdocs/create-document/{node_id}'
+  defaults:
+    _controller: '\Drupal\smashdocs\Controller\SmashdocsController::createDocument'
+    _title: 'test'
+  requirements:
+    _permission: 'access content'
+
+smashdocs.unarchive:
+  path: '/smashdocs/unarchive-document/{node_id}'
+  defaults:
+    _controller: '\Drupal\smashdocs\Controller\SmashdocsController::unarchiveDocument'
+    _title: 'test'
+  requirements:
+    _permission: 'access content'
+
+smashdocs.archive:
+  path: '/smashdocs/archive-document/{node_id}'
+  defaults:
+    _controller: '\Drupal\smashdocs\Controller\SmashdocsController::archiveDocument'
+    _title: 'test'
+  requirements:
+    _permission: 'access content'
+
+smashdocs.export:
+  path: '/smashdocs/export-document/{node_id}/{format}'
+  defaults:
+    _controller: '\Drupal\smashdocs\Controller\SmashdocsController::exportDocument'
+    _title: 'test'
+  requirements:
+    _permission: 'access content'
