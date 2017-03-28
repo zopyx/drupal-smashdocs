@@ -113,7 +113,15 @@ class SmashdocsController extends ControllerBase {
         $uri = 'public://smashdocs/'.$node_id.'/'.$node_id.'.'.$format;
         file_put_contents(\Drupal::service('file_system')->realpath($uri), $content);
 
-        $response = new RedirectResponse(\Drupal::service('stream_wrapper_manager')->getViaUri($uri)->getExternalUrl());
+        $file_url = \Drupal::service('stream_wrapper_manager')->getViaUri($uri)->getExternalUrl();
+
+
+        $meta->files->{$format} = $file_url;
+        $node->set('body', json_encode($meta));
+        $node->save();
+
+
+        $response = new RedirectResponse($file_url);
         $response->send();
         return;
     }

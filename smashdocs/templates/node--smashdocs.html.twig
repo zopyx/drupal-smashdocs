@@ -39,9 +39,16 @@
         </p>
         <p>
             <a href="/smashdocs/export-document/{{ node.id }}/sdxml" target="_blank" class="btn button smashdocs-edit-document">
-                {{ 'XML export'|t }}
+                {{ 'XML export'|t }}fff
             </a>
         </p>
+        {% if files is defined %}
+            {% for format, link in files %}
+                <p>
+                    <a href="{{ link }}">Download {{ format }} file</a>
+                </p>
+            {% endfor %}
+        {% endif %}
     </div>
 
     <div class="col-12">

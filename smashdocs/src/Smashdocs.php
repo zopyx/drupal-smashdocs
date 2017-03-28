@@ -282,6 +282,7 @@ class Smashdocs
     }
 
 
+
     function upload_document($fn, $title = null, $description = null, $role = 'editor')
     {
         $headers = array(
@@ -301,6 +302,7 @@ class Smashdocs
         } else {
             $url = $this->partner_url . "/partner/imports/sdxml/upload";
         }
+
         $client = new Client();
         $fp = fopen($fn, 'rb');
         $response = $client->post($url, array(

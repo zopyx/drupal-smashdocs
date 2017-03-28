@@ -19,10 +19,14 @@ function smashdocs_preprocess_node(&$variables){
     if(isset($variables['node']) AND $variables['node']->getType() == 'smashdocs'){
         $body = $variables['node']->get('body')->getValue();
         $meta = json_decode($body[0]['value']);
+
         if(isset($meta->baseInfo)){
             $sd = new \Drupal\smashdocs\Smashdocs();
             $meta->docInfo = (object) $sd->document_info($meta->baseInfo->documentId);
             $variables['meta'] = $meta;
+            if(isset($meta->files)){
+                $variables['files'] = (array) $meta->files;
+            }
         }else{
             $variables['file_form'] = \Drupal::formBuilder()->getForm('Drupal\smashdocs\Form\FileForm', $variables['node']->id());
         }
