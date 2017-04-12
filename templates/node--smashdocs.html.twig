@@ -5,7 +5,7 @@
         {% if meta.docInfo.archived %}
             <p>{{ "Can't edit"|t }}</p>
         {% else %}
-            <a href="/smashdocs/create-document/{{ node.id }}" target="_blank" class="btn button smashdocs-edit-document">
+            <a href="{{url('<front>')}}/smashdocs/create-document/{{ node.id }}" target="_blank" class="btn button smashdocs-edit-document">
                 {{ 'Edit document'|t }}
             </a>
         {% endif %}
@@ -14,12 +14,12 @@
     <div class="col-4">
         {% if meta.docInfo.archived %}
             <h3>{{ 'Unarchive'|t }}</h3>
-            <a href="/smashdocs/unarchive-document/{{ node.id }}" class="bnt button smashdoc-unarchive-document">
+            <a href="{{url('<front>')}}/smashdocs/unarchive-document/{{ node.id }}" class="bnt button smashdoc-unarchive-document">
                 {{ 'Unarchive document'|t }}
             </a>
         {% else %}
             <h3>{{ 'Archive'|t }}</h3>
-            <a href="/smashdocs/archive-document/{{ node.id }}" class="bnt button smashdoc-archive-document">
+            <a href="{{url('<front>')}}/smashdocs/archive-document/{{ node.id }}" class="bnt button smashdoc-archive-document">
                 {{ 'Archive document'|t }}
             </a>
         {% endif %}
@@ -28,18 +28,18 @@
     <div class="col-4">
         <h3>{{ 'Export'|t }}</h3>
         <p>
-            <a href="/smashdocs/export-document/{{ node.id }}/docx" target="_blank" class="btn button smashdocs-edit-document">
+            <a href="{{url('<front>')}}/smashdocs/export-document/{{ node.id }}/docx" target="_blank" class="btn button smashdocs-edit-document">
                 {{ 'DOCX export'|t }}
             </a>
         </p>
         <p>
-            <a href="/smashdocs/export-document/{{ node.id }}/html" target="_blank" class="btn button smashdocs-edit-document">
+            <a href="{{url('<front>')}}/smashdocs/export-document/{{ node.id }}/html" target="_blank" class="btn button smashdocs-edit-document">
                 {{ 'HTML export'|t }}
             </a>
         </p>
         <p>
-            <a href="/smashdocs/export-document/{{ node.id }}/sdxml" target="_blank" class="btn button smashdocs-edit-document">
-                {{ 'XML export'|t }}fff
+            <a href="{{url('<front>')}}/smashdocs/export-document/{{ node.id }}/sdxml" target="_blank" class="btn button smashdocs-edit-document">
+                {{ 'XML export'|t }} hello woxxx
             </a>
         </p>
         {% if files is defined %}
@@ -106,7 +106,7 @@
         <h3>{{ 'New'|t }}</h3>
         {#{{ kint(node) }}#}
         <h1>{{ testme }}</h1>
-        <a href="/smashdocs/create-document/{{ node.id }}" target="_blank" class="btn button smashdocs-create-document">
+        <a href="smashdocs/create-document/{{ node.id }}" target="_blank" class="btn button smashdocs-create-document">
             {{ 'Create document'|t }}
         </a>
     </div>
