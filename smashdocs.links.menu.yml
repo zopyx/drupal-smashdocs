@@ -1,0 +1,5 @@
+smashdocs.config:
+  title: 'SMASHDOCs config'
+  parent: system.admin_config_services
+  description: 'Admin config SMASHDOCs'
+  route_name: smashdocs.config
